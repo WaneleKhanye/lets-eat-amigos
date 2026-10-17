@@ -25,7 +25,7 @@ function MenuItem({ item }) {
 
 function Category({ category }) {
   return (
-    <section aria-labelledby={`cat-${category.id}-title`} className="scroll-mt-24 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-ink/5 sm:p-7" id={`cat-${category.id}`}>
+    <section aria-labelledby={`cat-${category.id}-title`} className="scroll-mt-4 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-ink/5 sm:p-7" id={`cat-${category.id}`}>
       <h4 id={`cat-${category.id}-title`} className="text-3xl sm:text-4xl">
         {category.name}
       </h4>
@@ -43,7 +43,7 @@ export default function Menu() {
   const showNotice = menuNeedsConfirmation && menus.length > 1
 
   return (
-    <section id="menu" aria-labelledby="menu-title" className="scroll-mt-16 bg-cream-2 py-16 sm:py-20">
+    <section id="menu" aria-labelledby="menu-title" className="bg-cream-2 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="eyebrow text-ember-ink">Prices in rand</p>
         <h2 id="menu-title" className="mt-3 text-5xl sm:text-6xl">

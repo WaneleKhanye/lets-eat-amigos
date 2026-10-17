@@ -21,7 +21,7 @@ export default function FindUs() {
   const [showMap, setShowMap] = useState(false)
 
   return (
-    <section id="find-us" aria-labelledby="find-title" className="scroll-mt-16 bg-cream py-16 sm:py-20">
+    <section id="find-us" aria-labelledby="find-title" className="bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="eyebrow text-ember-ink">Contact & location</p>
         <h2 id="find-title" className="mt-3 text-5xl sm:text-6xl">

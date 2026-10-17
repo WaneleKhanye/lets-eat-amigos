@@ -16,7 +16,7 @@ export default function Gallery() {
   const step = (d) => setIndex((i) => (i + d + photos.length) % photos.length)
 
   return (
-    <section id="gallery" aria-labelledby="gallery-title" className="scroll-mt-16 bg-coal py-16 text-cream sm:py-20">
+    <section id="gallery" aria-labelledby="gallery-title" className="bg-coal py-16 text-cream sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="eyebrow text-sun">Gallery</p>
         <h2 id="gallery-title" className="mt-3 text-5xl sm:text-6xl">

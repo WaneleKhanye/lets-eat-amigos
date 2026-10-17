@@ -21,7 +21,13 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    /* Matches the sticky header height so jump links land just below it. */
+    scroll-padding-top: 4rem;
+  }
+  @media (min-width: 40rem) {
+    html {
+      scroll-padding-top: 5rem;
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
     html {
