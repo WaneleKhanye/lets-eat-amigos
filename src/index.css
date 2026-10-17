@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-coal: #0f0c09;
+  --color-coal-2: #1b1611;
+  --color-coal-3: #2a221a;
+  --color-ember: #f28a1a;
+  --color-ember-dark: #c96a07;
+  --color-ember-ink: #9e4a04; /* orange that passes contrast on cream */
+  --color-sun: #ffc629;
+  --color-cream: #fff6e8;
+  --color-cream-2: #f7e9d2;
+  --color-ink: #1d1712;
+  --color-muted: #6b5c4c;
+  --color-flame: #d93a1f;
+
+  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sun);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+}
+
+@utility btn {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-base font-bold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-ember text-coal hover:bg-sun;
+}
+@utility btn-ghost {
+  @apply btn border-2 border-cream/70 text-cream hover:border-sun hover:text-sun;
+}
+@utility btn-dark {
+  @apply btn bg-coal text-cream hover:bg-coal-3;
+}
+@utility eyebrow {
+  @apply text-sm font-bold uppercase tracking-[0.18em];
+}
+/* Marks details that still need confirming before the site is published. */
+@utility tbc {
+  @apply rounded-lg border-2 border-dashed border-ember-dark bg-ember/10 px-3 py-2 text-sm font-semibold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
