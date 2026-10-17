@@ -24,8 +24,8 @@ export default function Hero() {
             <span className="block text-ember">{second}</span>
           </h1>
           <p className="mt-3 max-w-md text-base leading-relaxed text-cream/85 sm:text-lg md:mt-6">
-            Kotas loaded with chips, polony, cheese, Russian and more — right up to wings, ribs and crispy onion
-            rings. Made fresh in {business.address.area}.
+            Kotas on garlic-toasted bread, from classic polony and chips to special kotas with burgers, wings and
+            ribs — plus kota wraps, chips and sides. Made fresh in {business.address.area}.
           </p>
           <p className="mt-2 font-display text-xl uppercase tracking-wide text-sun max-md:[@media(max-height:740px)]:hidden">{business.slogan}</p>
           <div className="mt-5 grid grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-3 sm:flex md:mt-8">

@@ -67,13 +67,13 @@ export const business = {
 //  Prices are in rand. To change a price, edit the number.
 //  To add an item, copy an existing { ... } line and change it.
 //
-//  The current menu is the "Kasi Flavour" menu (confirmed by the owner).
-//  'main' is the older poster menu, kept for reference but not shown.
+//  The current menu is 'main', transcribed from the black-and-orange menu
+//  poster (confirmed by the owner). 'kasi-flavour' was superseded and isn't shown.
 //  activeMenuId picks which menu appears on the site. If it's set to null, the
 //  site shows "menuOverview" (what we serve, no prices) instead.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const activeMenuId = 'kasi-flavour'
+export const activeMenuId = 'main'
 
 // Only shown if activeMenuId is null. No prices.
 export const menuOverview = [
@@ -104,8 +104,8 @@ export const menuOverview = [
 export const menus = [
   {
     id: 'main',
-    title: 'Main menu',
-    source: 'From the colour and black/orange menu posters (older menu — not current)',
+    title: 'Menu',
+    source: 'Black-and-orange menu poster (current menu)',
     poster: '/images/menu/menu-poster-black-orange.jpg',
     categories: [
       {
@@ -134,19 +134,20 @@ export const menus = [
         ],
       },
       {
-        id: 'kota-wrap',
-        name: 'Kota Wrap',
+        id: 'packet-chips',
+        name: 'Packet chips',
+        note: 'Extras',
         items: [
-          { name: 'Kota Wrap', price: 65, ingredients: ['Chicken strip', 'bacon', 'cheese', 'lettuce', 'jalapeño', 'tomato'], extra: 'With chips' },
+          { name: 'Small', price: 10 },
+          { name: 'Medium', price: 20 },
+          { name: 'Large', price: 30 },
         ],
       },
       {
-        id: 'extras',
-        name: 'Extras',
+        id: 'kota-wrap',
+        name: 'Kota Wrap',
         items: [
-          { name: 'Packet chips — small', price: 10 },
-          { name: 'Packet chips — medium', price: 20 },
-          { name: 'Packet chips — large', price: 30 },
+          { price: 65, ingredients: ['Chicken strip and bacon with cheese', 'lettuce', 'jalapeño', 'tomato'], extra: 'With chips' },
         ],
       },
       {
@@ -165,7 +166,7 @@ export const menus = [
   {
     id: 'kasi-flavour',
     title: 'Kasi Flavour menu',
-    source: 'From the "Food Menu — Kasi Flavour" image',
+    source: 'From the "Food Menu — Kasi Flavour" image (superseded — not shown)',
     poster: '/images/menu/menu-kasi-flavour.jpg',
     categories: [
       {

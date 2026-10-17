@@ -34,7 +34,7 @@ Edit `openingHours` (one line per group of days) and `hoursNote`. To hide the op
 Edit `payments.cardSurcharges`, e.g. `{ where: 'at events', amount: 5 }`. The text appears in the menu's order panel and under Find Us.
 
 ### Which menu is shown
-`activeMenuId` is `'kasi-flavour'`, the current menu. The older poster menu (`'main'`) is kept in the file but isn't shown. If `activeMenuId` is set to `null`, the site shows *what we serve* without prices.
+`activeMenuId` is `'main'`, the current menu, transcribed from the black-and-orange menu poster (`public/images/menu/menu-poster-black-orange.jpg`, which the "View printed menu" link opens). Categories appear in the order listed: Kota, Special Kotas, Packet chips, Kota Wrap, Sides. The superseded Kasi Flavour menu is kept in the file but isn't shown. If `activeMenuId` is set to `null`, the site shows *what we serve* without prices.
 
 ### Add or replace a photo
 1. Make two copies of the photo as WebP: one 640 px wide and one 1200 px wide.
