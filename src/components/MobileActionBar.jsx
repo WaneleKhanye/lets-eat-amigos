@@ -1,10 +1,9 @@
-import { directionsUrl, orderAction, whatsappEnabled } from '../lib.js'
+import { directionsUrl, telUrl, whatsappEnabled, whatsappUrl } from '../lib.js'
 import { BookIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons.jsx'
 
 // Always-visible quick actions on phones. The footer has extra bottom padding
 // so this bar never hides content.
 export default function MobileActionBar() {
-  const OrderIcon = whatsappEnabled ? WhatsAppIcon : PhoneIcon
   const item = 'flex min-h-14 flex-1 flex-col items-center justify-center gap-0.5 text-xs font-bold'
 
   return (
@@ -20,14 +19,16 @@ export default function MobileActionBar() {
         <PinIcon />
         Directions
       </a>
-      <a
-        href={orderAction.href}
-        {...(orderAction.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        className={`${item} bg-ember text-coal`}
-      >
-        <OrderIcon />
-        {whatsappEnabled ? 'WhatsApp' : 'Call to order'}
+      <a href={telUrl} className={`${item} ${whatsappEnabled ? '' : 'bg-ember text-coal'}`}>
+        <PhoneIcon />
+        {whatsappEnabled ? 'Call' : 'Call to order'}
       </a>
+      {whatsappEnabled && (
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={`${item} bg-ember text-coal`}>
+          <WhatsAppIcon />
+          WhatsApp
+        </a>
+      )}
     </nav>
   )
 }

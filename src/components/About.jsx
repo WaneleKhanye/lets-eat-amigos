@@ -13,13 +13,16 @@ export default function About() {
           <div className="mt-6 space-y-4 text-lg leading-relaxed">
             <p>
               {business.name} is a {business.address.area} food business, serving the community since{' '}
-              {business.established}. We make kotas the way they should be: garlic-toasted bread, generous fillings and
-              chips piled in.
+              {business.established}. We make kotas the way they should be: generous fillings with chips piled
+              in.
             </p>
             <p>
-              From a simple polony kota to special kotas stacked with burger patties, eggs and ribs — plus kota wraps,
-              chips and sides — everything is made fresh and served hot.
+              From a kota with chips, polony, cheese and Russian to loaded kotas with rib burger, egg, wings, ribs and
+              crispy onion rings — everything is made fresh.
             </p>
+            {business.eventStalls && (
+              <p>You’ll also find our food stall at events.</p>
+            )}
             <p className="font-display text-2xl uppercase">Thank you for supporting local!</p>
           </div>
         </div>

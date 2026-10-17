@@ -8,10 +8,12 @@
 
 export const business = {
   name: "Let's Eat Amigos",
-  established: 2024, // confirmed by the owner (the logo artwork still says EST. 2025)
+  established: 2024, // confirmed by the owner (the logo artwork still says EST. 2025 — see HANDOVER.md)
   tagline: 'Big flavour. Bigger appetite.', // from both menu posters
   slogan: 'Real kotas. Real taste. Real Amigos!', // from both menu posters
 
+  // Confirmed address, used for the directions link. The map pin comes from
+  // Google's lookup of this address and hasn't been checked on the ground.
   address: {
     street: '31075 Mawele Street',
     area: 'Daveyton',
@@ -24,24 +26,35 @@ export const business = {
     dial: '+27787234176',
   },
 
-  // WhatsApp ordering. Set confirmed: true ONLY once the business confirms
-  // this number is on WhatsApp. Until then WhatsApp isn't mentioned and the
-  // order buttons say "Call to order".
+  // WhatsApp orders — confirmed by the owner. Order buttons link to
+  // https://wa.me/<number>. Set confirmed: false to switch back to "Call to order".
   whatsapp: {
     number: '27787234176', // international format, no + or spaces
-    confirmed: false,
-    message: "Hi Let's Eat Amigos! I'd like to place an order:",
+    confirmed: true,
   },
 
-  // Opening hours were not in the supplied material. While null, the
-  // opening-hours row is hidden. Example: [{ days: 'Mon – Fri', time: '10:00 – 20:00' }, ...]
-  openingHours: null,
+  // Opening hours — confirmed by the owner. Set to null to hide the row.
+  openingHours: [
+    { days: 'Monday–Friday', time: '10:00–20:00' },
+    { days: 'Saturday–Sunday', time: '09:00–17:00' },
+  ],
+  hoursNote: 'South African time (SAST)',
 
   payments: {
     cardAccepted: true, // confirmed by the owner
-    // Optional extra line, e.g. 'Card charges may apply.' (unconfirmed — see HANDOVER.md)
-    note: null,
+    // Card surcharges — confirmed by the owner. Amounts in rand.
+    cardSurcharges: [
+      { where: 'at our premises', amount: 2 },
+      { where: 'at events', amount: 5 },
+    ],
   },
+
+  // We run food stalls at events (confirmed). No dates or venues are listed on
+  // the site. Set to false to remove the mention.
+  eventStalls: true,
+
+  // Not offered (confirmed): delivery, collection and catering. The site
+  // doesn't mention them.
 
   social: [
     { label: 'TikTok', handle: '@lets.eat.amigos', url: 'https://www.tiktok.com/@lets.eat.amigos' },
@@ -54,16 +67,15 @@ export const business = {
 //  Prices are in rand. To change a price, edit the number.
 //  To add an item, copy an existing { ... } line and change it.
 //
-//  ⚠ TWO MENUS DISAGREE. The two big posters (colour + black/orange) match each
-//  other, but the "Kasi Flavour" menu has different kotas and prices.
-//  Until the business confirms which is current, activeMenuId is null and the
-//  site shows "menuOverview" below (what we serve, no prices) with a call
-//  button. To publish prices, set activeMenuId to 'main' or 'kasi-flavour'.
+//  The current menu is the "Kasi Flavour" menu (confirmed by the owner).
+//  'main' is the older poster menu, kept for reference but not shown.
+//  activeMenuId picks which menu appears on the site. If it's set to null, the
+//  site shows "menuOverview" (what we serve, no prices) instead.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const activeMenuId = null
+export const activeMenuId = 'kasi-flavour'
 
-// Shown while activeMenuId is null. Only food that appears on the menus — no prices.
+// Only shown if activeMenuId is null. No prices.
 export const menuOverview = [
   {
     id: 'kotas',
@@ -93,7 +105,7 @@ export const menus = [
   {
     id: 'main',
     title: 'Main menu',
-    source: 'From the colour and black/orange menu posters',
+    source: 'From the colour and black/orange menu posters (older menu — not current)',
     poster: '/images/menu/menu-poster-black-orange.jpg',
     categories: [
       {

@@ -1,5 +1,5 @@
 import { business, heroPhotoId } from '../data/site.js'
-import { orderAction, photoById, photoSrc, photoSrcSet, whatsappEnabled } from '../lib.js'
+import { orderAction, photoById, photoSrc, photoSrcSet, telUrl, whatsappEnabled } from '../lib.js'
 import { BookIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons.jsx'
 
 export default function Hero() {
@@ -24,11 +24,11 @@ export default function Hero() {
             <span className="block text-ember">{second}</span>
           </h1>
           <p className="mt-3 max-w-md text-base leading-relaxed text-cream/85 sm:text-lg md:mt-6">
-            Loaded kotas on garlic-toasted bread, special kotas, kota wraps and chips — all served hot and fresh from
-            our kitchen in {business.address.area}.
+            Kotas loaded with chips, polony, cheese, Russian and more — right up to wings, ribs and crispy onion
+            rings. Made fresh in {business.address.area}.
           </p>
           <p className="mt-2 font-display text-xl uppercase tracking-wide text-sun max-md:[@media(max-height:740px)]:hidden">{business.slogan}</p>
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:flex md:mt-8">
+          <div className="mt-5 grid grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-3 sm:flex md:mt-8">
             <a href="#menu" className="btn-primary px-3 sm:px-6">
               <BookIcon />
               View Menu
@@ -36,17 +36,18 @@ export default function Hero() {
             <a
               href={orderAction.href}
               {...(orderAction.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="btn-ghost px-3 sm:px-6"
+              className="btn-ghost gap-1.5 whitespace-nowrap px-2 text-[0.9375rem] max-[370px]:text-sm sm:gap-2 sm:px-6 sm:text-base"
             >
-              <OrderIcon />
+              <OrderIcon className="shrink-0" />
               {orderAction.label}
             </a>
           </div>
-          {!whatsappEnabled && (
-            <p className="mt-3 text-sm text-cream/70">
-              Orders: <a href={orderAction.href} className="font-semibold text-cream underline underline-offset-4">{business.phone.display}</a>
-            </p>
-          )}
+          <p className="mt-3 text-sm text-cream/70">
+            {whatsappEnabled ? 'Prefer to call? ' : 'Orders: '}
+            <a href={telUrl} className="inline-flex min-h-11 items-center font-semibold text-cream underline underline-offset-4">
+              {business.phone.display}
+            </a>
+          </p>
         </div>
 
         <figure className="order-1 md:order-2">

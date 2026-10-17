@@ -14,7 +14,11 @@ export default function Highlights() {
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted">
           Real photos of real plates. Some of these dishes aren’t on the printed menu yet —{' '}
-          <a href={orderAction.href} className="font-semibold text-ink underline underline-offset-4">
+          <a
+            href={orderAction.href}
+            {...(orderAction.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="font-semibold text-ink underline underline-offset-4"
+          >
             ask us
           </a>{' '}
           what’s available today and for the price.

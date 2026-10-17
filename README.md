@@ -24,20 +24,17 @@ Open `src/data/site.js` and find the `menus` list.
 - **Add an item:** copy an existing `{ price: …, ingredients: [ … ] }` line, paste it under the original and change it. Items can also have a `name:` and an `extra:` line (shown in orange).
 - **Remove an item:** delete its line.
 
-### Turn on WhatsApp ordering
-In `business.whatsapp`, set `confirmed: true` (and check `number`, written as `27…` with no `+` or spaces). Every “Call to order” button then becomes “Order on WhatsApp”, with a ready-written opening message, and a WhatsApp row appears under Find Us. Until then, WhatsApp isn't mentioned anywhere.
+### WhatsApp ordering
+WhatsApp ordering is on: `business.whatsapp` has `confirmed: true` and `number: '27787234176'`, so every order button opens https://wa.me/27787234176. Call buttons stay alongside it. To change the number, edit `number` (written as `27…`, with no `+` or spaces). To switch back to phone-only ordering, set `confirmed: false`.
 
-### Add opening hours
-The opening-hours row is hidden until you fill this in. Replace `openingHours: null` with something like:
-```js
-openingHours: [
-  { days: 'Mon – Fri', time: '10:00 – 20:00' },
-  { days: 'Sat – Sun', time: '10:00 – 22:00' },
-],
-```
+### Opening hours
+Edit `openingHours` (one line per group of days) and `hoursNote`. To hide the opening-hours row, set `openingHours: null`.
 
-### Show the menu with prices
-The supplied menus disagree, so for now the site shows *what we serve* (`menuOverview`) without prices. Once you know which menu is current, set `activeMenuId` to `'main'` (the posters) or `'kasi-flavour'`. The full priced menu then appears, with category buttons and a link to the printed menu.
+### Card surcharges
+Edit `payments.cardSurcharges`, e.g. `{ where: 'at events', amount: 5 }`. The text appears in the menu's order panel and under Find Us.
+
+### Which menu is shown
+`activeMenuId` is `'kasi-flavour'`, the current menu. The older poster menu (`'main'`) is kept in the file but isn't shown. If `activeMenuId` is set to `null`, the site shows *what we serve* without prices.
 
 ### Add or replace a photo
 1. Make two copies of the photo as WebP: one 640 px wide and one 1200 px wide.

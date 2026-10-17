@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { business } from '../data/site.js'
-import { directionsUrl, fullAddress, mapEmbedUrl, telUrl, whatsappEnabled, whatsappUrl } from '../lib.js'
+import { directionsUrl, fullAddress, mapEmbedUrl, surchargeText, telUrl, whatsappEnabled, whatsappUrl } from '../lib.js'
 import { CardIcon, ClockIcon, ExternalIcon, PhoneIcon, PinIcon, WhatsAppIcon } from './Icons.jsx'
 
 function Row({ icon: Icon, title, children }) {
@@ -54,29 +54,35 @@ export default function FindUs() {
 
             {whatsappEnabled && (
               <Row icon={WhatsAppIcon} title="WhatsApp">
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">
-                  Message us on WhatsApp
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mt-1 min-h-11 px-5 text-sm">
+                  Order on WhatsApp <ExternalIcon />
                 </a>
+                <p className="mt-2 text-base text-muted">{business.phone.display}</p>
               </Row>
             )}
 
             {business.openingHours?.length > 0 && (
               <Row icon={ClockIcon} title="Opening hours">
-                <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
+                <dl className="grid grid-cols-[auto_auto] justify-start gap-x-5 gap-y-1 max-[384px]:gap-x-4 max-[384px]:text-base">
                   {business.openingHours.map((h) => (
                     <div key={h.days} className="contents">
                       <dt className="font-semibold">{h.days}</dt>
-                      <dd>{h.time}</dd>
+                      <dd className="whitespace-nowrap tabular-nums">{h.time}</dd>
                     </div>
                   ))}
                 </dl>
+                {business.hoursNote && <p className="mt-2 text-sm text-muted">{business.hoursNote}</p>}
               </Row>
             )}
 
             {business.payments.cardAccepted && (
               <Row icon={CardIcon} title="Payment">
-                We accept card payments.{' '}
-                {business.payments.note && <span className="text-muted">{business.payments.note}</span>}
+                <p>We accept card payments.</p>
+                {surchargeText() && (
+                  <p className="mt-1 font-semibold">
+                    Card surcharge: {surchargeText()}.
+                  </p>
+                )}
               </Row>
             )}
           </div>
@@ -98,7 +104,7 @@ export default function FindUs() {
                   <button type="button" className="btn-primary" onClick={() => setShowMap(true)}>
                     Show map
                   </button>
-                  <p className="text-xs text-cream/60">Loads Google Maps</p>
+                  <p className="text-xs text-cream/60">Loads Google Maps, based on our street address</p>
                 </div>
               )}
             </div>

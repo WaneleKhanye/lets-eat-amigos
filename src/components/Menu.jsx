@@ -1,5 +1,5 @@
 import { activeMenuId, business, menuOverview, menus } from '../data/site.js'
-import { orderAction, rand, whatsappEnabled } from '../lib.js'
+import { orderAction, rand, surchargeText, telUrl, whatsappEnabled } from '../lib.js'
 import { CardIcon, ExternalIcon, PhoneIcon, WhatsAppIcon } from './Icons.jsx'
 
 const listToSentence = (list) => {
@@ -42,7 +42,7 @@ function Category({ category }) {
 function FullMenu({ menu }) {
   const cats = menu.categories
   return (
-    <div className="mt-10">
+    <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         {cats.length > 1 && (
           <nav aria-label="Menu categories">
@@ -72,7 +72,7 @@ function FullMenu({ menu }) {
           </a>
         )}
       </div>
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <div className={`mt-6 grid gap-6 ${cats.length > 1 ? 'lg:grid-cols-2' : ''}`}>
         {cats.map((c) => (
           <Category key={c.id} category={c} />
         ))}
@@ -104,9 +104,50 @@ function Overview() {
   )
 }
 
+// How to order, with card payment details. "beside" lays it out as a column
+// for sitting next to a single-category menu on wide screens.
+function OrderPanel({ menu, beside }) {
+  const OrderIcon = whatsappEnabled ? WhatsAppIcon : PhoneIcon
+  return (
+    <div
+      className={`flex flex-col gap-5 rounded-3xl bg-coal p-6 text-cream sm:p-8 ${
+        beside ? 'sm:flex-row sm:items-center sm:justify-between lg:sticky lg:top-24 lg:flex-col lg:items-stretch' : 'sm:flex-row sm:items-center sm:justify-between'
+      }`}
+    >
+      <div>
+        <p className="font-display text-3xl uppercase">{menu ? 'Ready to order?' : 'Prices & today’s menu'}</p>
+        <p className="mt-1 text-cream/80">
+          {whatsappEnabled ? 'Send us your order on WhatsApp or give us a call.' : 'Call us to place your order.'}
+        </p>
+        {business.payments.cardAccepted && (
+          <div className="mt-3 flex items-start gap-2 text-sun">
+            <CardIcon className="mt-0.5 shrink-0" />
+            <p>
+              <span className="font-semibold">We accept card payments.</span>
+              {surchargeText() && <span className="block text-cream/85">Card surcharge: {surchargeText()}.</span>}
+            </p>
+          </div>
+        )}
+      </div>
+      <div className={`flex shrink-0 flex-col gap-3 ${beside ? 'sm:items-end lg:items-stretch' : 'sm:items-end'}`}>
+        {whatsappEnabled && (
+          <a href={orderAction.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <OrderIcon />
+            {orderAction.label}
+          </a>
+        )}
+        <a href={telUrl} className={whatsappEnabled ? 'btn-ghost' : 'btn-primary'}>
+          <PhoneIcon />
+          Call {business.phone.display}
+        </a>
+      </div>
+    </div>
+  )
+}
+
 export default function Menu() {
   const menu = menus.find((m) => m.id === activeMenuId)
-  const OrderIcon = whatsappEnabled ? WhatsAppIcon : PhoneIcon
+  const beside = menu?.categories.length === 1
 
   return (
     <section id="menu" aria-labelledby="menu-title" className="bg-cream-2 py-16 sm:py-20">
@@ -117,31 +158,19 @@ export default function Menu() {
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted">Kotas made to order and served hot and fresh.</p>
 
-        {menu ? <FullMenu menu={menu} /> : <Overview />}
-
-        <div className="mt-10 flex flex-col gap-5 rounded-3xl bg-coal p-6 text-cream sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <div>
-            <p className="font-display text-3xl uppercase">{menu ? 'Ready to order?' : 'Prices & today’s menu'}</p>
-            <p className="mt-1 text-cream/80">
-              {menu ? 'Give us a call and we’ll have it ready.' : 'Call us for current prices and to place your order.'}
-            </p>
-            {business.payments.cardAccepted && (
-              <p className="mt-3 flex items-center gap-2 font-semibold text-sun">
-                <CardIcon />
-                We accept card payments.
-                {business.payments.note && <span className="font-normal text-cream/70">{business.payments.note}</span>}
-              </p>
-            )}
+        {beside ? (
+          <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-start">
+            <FullMenu menu={menu} />
+            <OrderPanel menu={menu} beside />
           </div>
-          <a
-            href={orderAction.href}
-            {...(orderAction.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            className="btn-primary shrink-0"
-          >
-            <OrderIcon />
-            {whatsappEnabled ? orderAction.label : `Call ${business.phone.display}`}
-          </a>
-        </div>
+        ) : (
+          <>
+            <div className="mt-10">{menu ? <FullMenu menu={menu} /> : <Overview />}</div>
+            <div className="mt-10">
+              <OrderPanel menu={menu} />
+            </div>
+          </>
+        )}
       </div>
     </section>
   )
