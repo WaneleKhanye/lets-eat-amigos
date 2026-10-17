@@ -2,13 +2,13 @@
 //  LET'S EAT AMIGOS — all business details, menu items and photos live here.
 //  Edit this file to update the website. You don't need to touch any other file.
 //
-//  Anything marked  null  or  confirmed: false  is shown on the site as
-//  "To be confirmed" (or hidden) until you fill it in.
+//  Anything marked  null  or  confirmed: false  is left OFF the website until
+//  you fill it in. Open questions are listed in HANDOVER.md.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const business = {
   name: "Let's Eat Amigos",
-  established: 2025, // from the logo ("EST. 2025")
+  established: 2024, // confirmed by the owner (the logo artwork still says EST. 2025)
   tagline: 'Big flavour. Bigger appetite.', // from both menu posters
   slogan: 'Real kotas. Real taste. Real Amigos!', // from both menu posters
 
@@ -25,20 +25,22 @@ export const business = {
   },
 
   // WhatsApp ordering. Set confirmed: true ONLY once the business confirms
-  // this number is on WhatsApp. Until then the site shows "Call to order".
+  // this number is on WhatsApp. Until then WhatsApp isn't mentioned and the
+  // order buttons say "Call to order".
   whatsapp: {
     number: '27787234176', // international format, no + or spaces
     confirmed: false,
     message: "Hi Let's Eat Amigos! I'd like to place an order:",
   },
 
-  // Opening hours were not in the supplied material.
-  // Example: [{ days: 'Mon – Fri', time: '10:00 – 20:00' }, ...]
+  // Opening hours were not in the supplied material. While null, the
+  // opening-hours row is hidden. Example: [{ days: 'Mon – Fri', time: '10:00 – 20:00' }, ...]
   openingHours: null,
 
   payments: {
-    cardAccepted: true, // "We do accept card payments" on both posters
-    note: 'Card charges may apply.', // printed on the "Kasi Flavour" menu
+    cardAccepted: true, // confirmed by the owner
+    // Optional extra line, e.g. 'Card charges may apply.' (unconfirmed — see HANDOVER.md)
+    note: null,
   },
 
   social: [
@@ -54,12 +56,38 @@ export const business = {
 //
 //  ⚠ TWO MENUS DISAGREE. The two big posters (colour + black/orange) match each
 //  other, but the "Kasi Flavour" menu has different kotas and prices.
-//  Both are shown until the business confirms which is current. When it does,
-//  delete the menu you no longer use from this list and set
-//  menuNeedsConfirmation to false.
+//  Until the business confirms which is current, activeMenuId is null and the
+//  site shows "menuOverview" below (what we serve, no prices) with a call
+//  button. To publish prices, set activeMenuId to 'main' or 'kasi-flavour'.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const menuNeedsConfirmation = true
+export const activeMenuId = null
+
+// Shown while activeMenuId is null. Only food that appears on the menus — no prices.
+export const menuOverview = [
+  {
+    id: 'kotas',
+    name: 'Kotas',
+    description: 'Toasted bread loaded with chips and your choice of fillings.',
+    fillings: ['Chips', 'Polony', 'Cheese', 'Russian', 'Vienna', 'Ham', 'Lettuce', 'Red onion'],
+  },
+  {
+    id: 'loaded-kotas',
+    name: 'Loaded kotas',
+    description: 'Our biggest kotas, stacked high — some served with chicken wings and ribs.',
+    fillings: ['Egg', 'Bacon', 'Beef burger', 'Rib burger', 'Chicken wings', 'Ribs'],
+  },
+  {
+    id: 'kota-wrap',
+    name: 'Kota wrap',
+    description: 'Chicken strip and bacon with cheese, lettuce, jalapeño and tomato, with chips.',
+  },
+  {
+    id: 'chips-sides',
+    name: 'Chips & sides',
+    description: 'Packet chips in small, medium and large, plus extra Russian, vienna, special, cheese or ham.',
+  },
+]
 
 export const menus = [
   {

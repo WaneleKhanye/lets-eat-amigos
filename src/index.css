@@ -68,10 +68,6 @@
 @utility eyebrow {
   @apply text-sm font-bold uppercase tracking-[0.18em];
 }
-/* Marks details that still need confirming before the site is published. */
-@utility tbc {
-  @apply rounded-lg border-2 border-dashed border-ember-dark bg-ember/10 px-3 py-2 text-sm font-semibold;
-}
 
 @media (prefers-reduced-motion: reduce) {
   *,

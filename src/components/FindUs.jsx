@@ -52,18 +52,16 @@ export default function FindUs() {
               </a>
             </Row>
 
-            <Row icon={WhatsAppIcon} title="WhatsApp">
-              {whatsappEnabled ? (
+            {whatsappEnabled && (
+              <Row icon={WhatsAppIcon} title="WhatsApp">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4">
                   Message us on WhatsApp
                 </a>
-              ) : (
-                <p className="tbc inline-block">WhatsApp ordering — to be confirmed</p>
-              )}
-            </Row>
+              </Row>
+            )}
 
-            <Row icon={ClockIcon} title="Opening hours">
-              {business.openingHours?.length ? (
+            {business.openingHours?.length > 0 && (
+              <Row icon={ClockIcon} title="Opening hours">
                 <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
                   {business.openingHours.map((h) => (
                     <div key={h.days} className="contents">
@@ -72,10 +70,8 @@ export default function FindUs() {
                     </div>
                   ))}
                 </dl>
-              ) : (
-                <p className="tbc inline-block">Opening hours — to be confirmed</p>
-              )}
-            </Row>
+              </Row>
+            )}
 
             {business.payments.cardAccepted && (
               <Row icon={CardIcon} title="Payment">

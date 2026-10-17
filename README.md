@@ -25,10 +25,10 @@ Open `src/data/site.js` and find the `menus` list.
 - **Remove an item:** delete its line.
 
 ### Turn on WhatsApp ordering
-In `business.whatsapp`, set `confirmed: true` (and check `number`, written as `27…` with no `+` or spaces). Every “Call to order” button then becomes “Order on WhatsApp”, with a ready-written opening message.
+In `business.whatsapp`, set `confirmed: true` (and check `number`, written as `27…` with no `+` or spaces). Every “Call to order” button then becomes “Order on WhatsApp”, with a ready-written opening message, and a WhatsApp row appears under Find Us. Until then, WhatsApp isn't mentioned anywhere.
 
 ### Add opening hours
-Replace `openingHours: null` with something like:
+The opening-hours row is hidden until you fill this in. Replace `openingHours: null` with something like:
 ```js
 openingHours: [
   { days: 'Mon – Fri', time: '10:00 – 20:00' },
@@ -36,8 +36,8 @@ openingHours: [
 ],
 ```
 
-### Pick the current menu
-There are two menus because the supplied menus disagree (see below). Once you know which one is current, delete the other one from `menus` and set `menuNeedsConfirmation = false`.
+### Show the menu with prices
+The supplied menus disagree, so for now the site shows *what we serve* (`menuOverview`) without prices. Once you know which menu is current, set `activeMenuId` to `'main'` (the posters) or `'kasi-flavour'`. The full priced menu then appears, with category buttons and a link to the printed menu.
 
 ### Add or replace a photo
 1. Make two copies of the photo as WebP: one 640 px wide and one 1200 px wide.
@@ -68,14 +68,6 @@ If a photo is wide, add `fit: 'contain'` so the food never gets cropped. Otherwi
 
 The original WhatsApp files were removed from the project folder after the organised copies were checked. They are still in the Git history (commit `bde1f77`) if you ever need them.
 
-## To confirm before publishing
+## Before publishing
 
-1. **Which menu is current?** The two big posters match each other: kotas R15–R50, special kotas R50–R100, kota wrap R65, chips and sides. The “Food Menu — Kasi Flavour” image lists different kotas (Kota 01–04 at R50, R100, R150 and R200). Both are shown for now, with a “prices to be confirmed” notice.
-2. **Is +27 78 723 4176 on WhatsApp?** It is printed as the number “for orders”, but WhatsApp isn't mentioned anywhere. Until this is confirmed, the site uses “Call to order”.
-3. **Opening hours:** not in the supplied material.
-4. **Business name spelling:** the logos say “Amigo’s” but other text says “Amigos”. The site uses “Let’s Eat Amigos”.
-5. **Logo file:** the logo was cropped from a poster. An original logo file (PNG or SVG) would look sharper.
-6. **Card charges:** only the Kasi Flavour menu says “charges do apply”.
-7. **Dishes in photos but not on the menu:** burgers, stew plate, toasted sandwich and platters. Should any be added to the menu, and at what price?
-8. **Map pin:** check that Google Maps finds 31075 Mawele Street, Daveyton correctly.
-9. **Delivery, collection or catering:** not mentioned on the site because it wasn't confirmed.
+Open questions for the business are in **[HANDOVER.md](HANDOVER.md)**. Unconfirmed details are left off the website rather than shown as "to be confirmed".
