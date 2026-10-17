@@ -16,12 +16,7 @@ Open questions are listed first, then the details the owner has confirmed. Nothi
   The photos show burgers, a stew plate, a toasted sandwich and platters/trays. None of these is on the current poster menu. *For now they appear in the photos only, with no prices, and customers are asked to message or call.*
   → Should any be added to the menu, and at what prices? Or should any photos be swapped out?
 
-- [ ] **4. Two small wording points on the poster.**
-  - R30 kota: the poster says "Archaar **chip** cheese…". The site shows "chips", like every other kota. Is that right?
-  - Special kotas: the poster says "ham egg" with no comma. The site reads it as two fillings, "ham, egg". Is that right?
-  → If either is wrong, edit the `ingredients` list for that item in `menus` → `main`.
-
-- [ ] **5. Event stall details (optional).**
+- [ ] **4. Event stall details (optional).**
   *For now the site only says "You'll also find our food stall at events."* No dates, venues or booking details are shown.
   → If you'd like upcoming events listed, send the dates and venues.
 
@@ -30,6 +25,7 @@ Open questions are listed first, then the details the owner has confirmed. Nothi
 - [x] Business name: **Let's Eat Amigos**
 - [x] Founded: **2024** (`business.established`)
 - [x] Current menu: the **black-and-orange menu poster** (`activeMenuId = 'main'`). Prices: Kota R15/R20/R25/R30/R40/R50; Special Kotas R50/R60/R70/R80/R100; Packet chips small R10, medium R20, large R30; Kota Wrap R65; Sides: Russian R17, Vienna R10, Special R3, Cheese R4, Ham R4. The "View printed menu" link opens `public/images/menu/menu-poster-black-orange.jpg`. The poster's EST. 2025 doesn't override the confirmed 2024.
+- [x] Poster wording: the R30 kota uses **"chips"**, and the special kotas list **"ham, egg"** as two separate fillings.
 - [x] The Kasi Flavour menu was superseded. It's still in the data file but isn't shown on the site.
 - [x] WhatsApp orders on **+27 78 723 4176**, linking to https://wa.me/27787234176 (`whatsapp.confirmed = true`). A separate call option is kept.
 - [x] Opening hours, South African time: **Monday–Friday 10:00–20:00; Saturday–Sunday 09:00–17:00** (`openingHours`)
