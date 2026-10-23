@@ -13,7 +13,7 @@ export default function Highlights() {
           Food that fills you up
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-muted">
-          Real photos of real plates. Some of these dishes aren’t on the printed menu yet —{' '}
+          Real photos of real plates. Some of these dishes aren’t on our current menu —{' '}
           <a
             href={orderAction.href}
             {...(orderAction.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
@@ -21,7 +21,7 @@ export default function Highlights() {
           >
             ask us
           </a>{' '}
-          what’s available today and for the price.
+          what’s available.
         </p>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

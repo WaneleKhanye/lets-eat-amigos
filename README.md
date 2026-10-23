@@ -49,7 +49,7 @@ If a photo is wide, add `fit: 'contain'` so the food never gets cropped. Otherwi
 
 | File | Source file supplied |
 | --- | --- |
-| `public/images/brand/lets-eat-amigos-logo.png/.webp` | Cropped from the black/orange menu poster |
+| `public/images/brand/lets-eat-amigos-logo.png/.webp`, `public/favicon.png`, `public/apple-touch-icon.png` | Cropped from the black/orange menu poster, with the year corrected to EST. 2024 (original in `design-source/`) |
 | `public/images/menu/menu-poster-colour.jpg` | WhatsApp Image 2026-10-05 at 18.58.55 |
 | `public/images/menu/menu-poster-black-orange.jpg` | WhatsApp Image 2026-10-05 at 18.58.56 |
 | `public/images/menu/menu-kasi-flavour.jpg` | WhatsApp Image 2026-10-05 at 19.01.24 |

@@ -1,24 +1,23 @@
 # Handover checklist — Let's Eat Amigos
 
-Open questions are listed first, then the details the owner has confirmed. Nothing unconfirmed is shown on the website. Each item says what to change in [`src/data/site.js`](src/data/site.js).
+Remaining actions are listed first, then decisions, then the details the owner has confirmed. Nothing unconfirmed is shown on the website. Business details live in [`src/data/site.js`](src/data/site.js).
 
 ## Still to do
 
-- [ ] **1. Logo file showing EST. 2024.**
-  The current logo was cropped from a menu poster, and its artwork says **"EST. 2025"**. The site's text uses the confirmed year, **2024**, but the logo graphic hasn't been changed.
-  → Send a sharp logo file (PNG or SVG, ideally with a transparent background) that says EST. 2024. Replace `public/images/brand/lets-eat-amigos-logo.png` and `.webp`, then regenerate `public/favicon.png` and `public/apple-touch-icon.png`.
+- [ ] **Check the map pin on the ground (owner action).**
+  "Get directions" opens `https://www.google.com/maps/dir/?api=1&destination=31075 Mawele Street, Daveyton 1520, South Africa`, and "Show map" searches the same address. Both use Google's lookup of the confirmed address. **The exact pin couldn't be verified while building the site**: the build environment can't reach Google Maps or OpenStreetMap, and nobody has checked the result on the ground. The site doesn't claim the pin is exact; the map is labelled "based on our street address".
+  → Open "Get directions" on a phone and check it arrives at the premises. If it doesn't, send a Google Maps pin or share link and we'll switch the directions to that pin.
 
-- [ ] **2. Map pin.**
-  "Get directions" and "Show map" use Google's lookup of the confirmed address. The exact pin hasn't been checked on the ground.
-  → Open the directions link on a phone and check it arrives at 31075 Mawele Street. If it doesn't, send a Google Maps pin link and we'll use it instead.
+- [ ] **Event dates and venues — only when you send them.**
+  *They're left off the website on purpose.* The site only says "You'll also find our food stall at events."
+  → When you'd like events listed, send the dates and venues and we'll add them.
 
-- [ ] **3. Dishes in photos that aren't on the current menu.**
-  The photos show burgers, a stew plate, a toasted sandwich and platters/trays. None of these is on the current poster menu. *For now they appear in the photos only, with no prices, and customers are asked to message or call.*
-  → Should any be added to the menu, and at what prices? Or should any photos be swapped out?
+## Decisions
 
-- [ ] **4. Event stall details (optional).**
-  *For now the site only says "You'll also find our food stall at events."* No dates, venues or booking details are shown.
-  → If you'd like upcoming events listed, send the dates and venues.
+- [x] **Logo corrected to EST. 2024.** The website logo (header, footer, favicon and Apple touch icon) is the original poster crop with the final "5" replaced by a "4". The rest of the design is unchanged. The uncorrected crop is kept in `design-source/logo-original-est-2025.png`. The menu poster (`public/images/menu/menu-poster-black-orange.jpg`) is unchanged as a source reference and still says EST. 2025. A sharper original logo file would still be welcome, but isn't required.
+- [x] **Dishes shown only in photos stay in the gallery only.** Burgers, the stew plate, the toasted sandwich and the platters/trays aren't added to the menu and have no prices. The highlights text says some dishes "aren't on our current menu — ask us what's available."
+- [x] **Directions stay address-based** until a verified pin link is provided (see above).
+- [x] **No event dates or venues on the site** until you provide them.
 
 ## Confirmed by the owner
 
